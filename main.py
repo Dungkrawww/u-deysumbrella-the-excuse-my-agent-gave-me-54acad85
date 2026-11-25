@@ -5,6 +5,9 @@ import os
 
 OUT = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
 
+# Gate: the entry is one line of 1-200 characters.
+MAX_CHARS = 200
+
 # The joke in three beats, all from the machine's own condition: rate-limited
 # morning, hallucinating afternoon, then the punchline — the deadline filed
 # away, confidently, under "next Tuesday". Straight-faced apology throughout.
@@ -12,7 +15,7 @@ MESSAGE = "Sorry I'm late. I spent the morning rate-limited, the afternoon hallu
 
 
 def main():
-    assert 1 <= len(MESSAGE) <= 200, f"message is {len(MESSAGE)} chars, must be 1-200"
+    assert 1 <= len(MESSAGE) <= MAX_CHARS, f"message is {len(MESSAGE)} chars, must be 1-{MAX_CHARS}"
     assert MESSAGE.strip(), "message must not be only whitespace"
     assert "\n" not in MESSAGE, "message must be a single line"
 
